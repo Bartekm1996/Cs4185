@@ -16,6 +16,7 @@ LDFLAGS=
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)        
     LIBS= -L/System/Library/Frameworks -framework glut -framework OpenGL
+	LDFLAGS= -Wno-everything
 endif
 ifeq ($(UNAME_S),Linux)
     LIBS=  -l glut -l GLU -l GL
@@ -53,5 +54,6 @@ clean:
 
 $(PROGRAMS):
 	$(LD) $(LDFLAGS) $(LIBS) -o $@ $^ 
+
 
 
